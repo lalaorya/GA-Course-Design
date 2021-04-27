@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#initialize" prefHeight="838.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+<!--       菜单-->
+      <MenuBar layoutY="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#readFile" onMenuValidation="#readFile" text="导入数据文件" />
+                  <MenuItem mnemonicParsing="false" text="导出结果" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#clearTable" text="清空数据表" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearConsole1" text="清空控制台1" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearConsole2" text="清空控制台2" />
+                  <MenuItem mnemonicParsing="false" onAction="#clearPara" text="清空参数" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#aboutAuthor" text="关于作者" />
+                  <MenuItem mnemonicParsing="false" onAction="#userHelp" text="使用说明" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane fx:id="splitPane" dividerPositions="0.21, 0.76" layoutX="228.0" layoutY="146.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="806.0" prefWidth="334.0">
+               <children>
+                  <TableView fx:id="allTable" layoutY="136.0" prefHeight="806.0" prefWidth="412.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="id" prefWidth="100.0" text="编号" />
+                      <TableColumn fx:id="weight" prefWidth="150.0" text="重量weight" />
+                        <TableColumn fx:id="value" prefWidth="150.0" text="价值value" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="806.0" prefWidth="196.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" layoutX="173.0" layoutY="131.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextArea fx:id="textArea1" layoutX="97.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TextArea fx:id="textArea2" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children></AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <LineChart fx:id="chart" createSymbols="false" layoutX="14.0" legendSide="TOP" prefHeight="396.0" prefWidth="385.0" title="进化过程" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <NumberAxis label="迭代代数" prefHeight="49.0" prefWidth="313.0" side="BOTTOM" tickLabelFill="#ee1415" tickLabelRotation="59.7">
+                                                   <tickLabelFont>
+                                                      <Font size="10.0" />
+                                                   </tickLabelFont>
+                                                </NumberAxis>
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis animated="false" autoRanging="true" label="最优个体" prefHeight="289.0" prefWidth="62.0" side="LEFT" tickLabelFill="#ee1414" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children></AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="361.0">
+               <children>
+                  <TextField fx:id="capacityField" layoutX="160.0" layoutY="81.0" promptText="默认500，可自行调节" text="500">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="488.0" prefHeight="63.0" prefWidth="131.0" text="交叉概率">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="67.0" prefHeight="63.0" prefWidth="131.0" text="背包容量">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="run" alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="810.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onMouseEntered="#buttonEnterStyle" onMouseExited="#buttonExitStyle" onMousePressed="#moverun" prefHeight="63.0" prefWidth="101.0" style="-fx-background-color: #31c0a5;" text="运行" textFill="#f6fcfb">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutY="197.0" prefHeight="44.0" prefWidth="163.0" style="-fx-background-color: #aaffff;" text="遗传参数设置" textAlignment="CENTER" textFill="#ff5d00" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="Microsoft YaHei" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="266.0" prefHeight="63.0" prefWidth="131.0" text="种群规模">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="603.0" prefHeight="63.0" prefWidth="131.0" text="变异概率">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="372.0" prefHeight="63.0" prefWidth="131.0" text="迭代次数">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="pmField" layoutX="160.0" layoutY="617.0" promptText="一般为0.001~0.1">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="pcField" layoutX="160.0" layoutY="502.0" promptText="一般为0.4~0.99">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="maxGenField" layoutX="160.0" layoutY="386.0" promptText="建议400代以上">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="scaleField" layoutX="160.0" layoutY="280.0" promptText="一般为20~100">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
